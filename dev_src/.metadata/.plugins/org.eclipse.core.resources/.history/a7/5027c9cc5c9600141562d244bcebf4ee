@@ -1,0 +1,5 @@
+browser = Firefox
+cs_url = https://cloudshield.cirrosecure.com
+os = windows
+webdriver.chrome.driver = D:\dev_src\CSAutomation\binaries\chromeDriver2.13
+webdriver.ie.driver = D:\\dev_src\\CSAutomation\\binaries\\ieDriver\\x64

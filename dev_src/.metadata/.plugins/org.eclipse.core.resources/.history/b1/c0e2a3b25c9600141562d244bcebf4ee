@@ -1,0 +1,5 @@
+browser = Firefox
+cs_url = https://cloudshield.cirrosecure.com
+os = windows
+webdriver.chrome.driver = 
+webdriver.ie.driver

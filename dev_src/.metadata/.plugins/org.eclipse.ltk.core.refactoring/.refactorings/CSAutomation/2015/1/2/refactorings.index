@@ -1,0 +1,26 @@
+1420520477175	Delete element
+1420522377543	Delete element
+1420522500617	Delete element
+1420522549447	Move compilation unit
+1420522574659	Move compilation unit
+1420522674773	Move compilation unit
+1420522726255	Rename package 'com.cirrosecure.automatedtest.POC'
+1420522757950	Rename package 'com.cirrosecure.automatedtest'
+1420523928507	Delete element
+1420523947563	Delete element
+1420527613755	Rename type 'POC'
+1420535722975	Rename type 'PocMap'
+1420540321620	Rename resource 'envConfig.properties'
+1420547740262	Rename method 'SelectBrowserDriver'
+1420612806962	Rename package 'com.cirrosecure.POC'
+1420612836625	Rename package 'com.cirrosecure.POC'
+1420612919600	Rename package 'htmlDOM'
+1420612936303	Rename type 'PocUIMap'
+1420627955350	Rename method 'getBrowserDriver'
+1420632485648	Rename method 'etPropertyValue'
+1420697513605	Rename type 'CoreFunctions'
+1420697530234	Rename field 'cf'
+1420707953114	Rename local variable 'LocatorType'
+1420711300071	Rename local variable 'htmlDomValue'
+1420711315578	Rename local variable 'elementLocator'
+1420712833611	Rename local variable 'myLocator'

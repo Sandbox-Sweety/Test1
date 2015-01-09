@@ -1,0 +1,222 @@
+/**
+ * 
+ */
+package com.cirrosecure.poc;
+
+import static org.testng.Assert.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.By.*;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+/**
+ * @author sharma_swt
+ *
+ */
+public class FunctionLibrary {	
+
+	WebDriver driver;
+	//WebElement we;
+	WebDriverWait wait = new WebDriverWait(driver, 30);
+	static final String workingDir = System.getProperty("user.dir");
+	public static final String ENVCONFIG_PROPERTIES = workingDir + "\\config\\env_config.properties";
+	public static final String CS_URL = getPropertyValue("cs_url");
+	static final String chromeDriverPath = getPropertyValue("webdriver.chrome.driver");
+	static final String internetExplorerDriverPath = getPropertyValue("webdriver.ie.driver");
+
+	public void open_Browser()
+	{
+		String browserName = getPropertyValue("browser");
+		System.out.println("browser : " + browserName);
+
+		try {
+			if (browserName.equalsIgnoreCase("Firefox")) {
+				driver = new FirefoxDriver();
+			} else if (browserName.equalsIgnoreCase("Chrome")) {
+				System.out.println(browserName);
+				System.out.println(chromeDriverPath);
+				System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+				driver = new ChromeDriver();
+			} else if (browserName.equalsIgnoreCase("IE")) {
+				System.setProperty("webdriver.ie.driver", internetExplorerDriverPath);
+				driver = new InternetExplorerDriver();
+			}
+		} catch (WebDriverException e) {
+			System.out.println(e.getMessage());
+		}	
+	}
+
+	public void close_Browser()
+	{
+		driver.close();
+	}
+
+	public void quit_Driver()
+	{
+		driver.quit();
+	}
+
+	public void launch_URL()
+	{		
+		if (CS_URL==null)
+		{			
+			fail("Cannot retrive value for property cs_url.");
+		}
+		else
+		{
+			driver.get(CS_URL);
+		}		
+	}
+
+	public static String getPropertyValue(String PropertyName) 
+	{		
+		Properties prop = new Properties();
+		String PropertyValue=null;
+		System.out.println("Current working directory : " + workingDir);
+		System.out.println("Properties file directory : " + ENVCONFIG_PROPERTIES);
+		try{
+			prop.load(new FileInputStream(ENVCONFIG_PROPERTIES));
+
+			PropertyValue = prop.getProperty(PropertyName);	
+			System.out.println(PropertyValue);
+			System.out.println(prop.getProperty("cs_url"));		
+		}
+		catch (Exception e)
+		{
+			fail("Cannot retrive value for property cs_url : " + e.getMessage());
+
+		}
+		return PropertyValue;		
+	}
+
+	public boolean verify_PageTitle(String Title)
+	{
+		String PageTitle = driver.getTitle();
+		System.out.println("PageTitle: " + driver.getTitle());
+		System.out.println(Title);
+		if (Title.equals(PageTitle))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}		
+	}
+
+	public boolean isElementPresent(By locator)  
+	{
+		Boolean elementPresent = false;
+		try{
+			elementPresent = driver.findElements(locator).size() > 0;
+		}
+		catch (NoSuchElementException e){
+
+			e.printStackTrace();			
+		}
+		return elementPresent;
+	}
+
+	public void enter_Text(String locatorType, String elementLocator, String typeText)
+	{
+		//WebElement we = null;
+		By myLocator = null;
+
+		if (locatorType.equalsIgnoreCase("xpath"))
+		{
+			myLocator = ByXPath.xpath(elementLocator);
+		}
+		else if (locatorType.equalsIgnoreCase("id"))
+		{
+			myLocator = By.id(elementLocator);
+		}
+		else if (locatorType.equalsIgnoreCase("name"))
+		{
+			myLocator = By.name(elementLocator);
+		}
+		else if (locatorType.equalsIgnoreCase("LinkText"))
+		{
+			myLocator = By.linkText(elementLocator);
+		}
+
+		if (isElementPresent(myLocator))
+		{
+			driver.findElement(myLocator).sendKeys(typeText);
+		}
+		else
+		{
+			fail("Text element: '" + elementLocator + "'could not be found on the page.");
+		}
+
+	}
+
+	//By Default the enter text function will use XPATH for object recognition on the web page.
+	public void enter_Text(String elementLocator, String typeText)
+	{
+		//WebElement we = null;
+		By textLocator = null;		
+		try{
+			textLocator = ByXPath.xpath(elementLocator);						
+			if (isElementPresent(textLocator))
+			{
+				driver.findElement(textLocator).sendKeys(typeText);
+			}
+			else
+			{
+				fail("Text element: '" + elementLocator + "'could not be found on the page.");
+			}
+		}
+		catch (Exception e){
+
+			e.printStackTrace();			
+		}
+	}
+
+	public void click_Button(String buttonId)
+	{
+		
+		By buttonLocator = null;		
+		try{
+			buttonLocator = ByXPath.xpath(buttonId);						
+			if (isElementPresent(buttonLocator))
+			{
+				driver.findElement(buttonLocator).submit();
+			}
+			else
+			{
+				fail("Could not click on Button:" + buttonId);
+			}
+		}
+		catch (Exception e){
+
+			e.printStackTrace();			
+		}
+	}
+	
+	public Boolean verify_PageLoaded(WebElement we)
+	{
+		if (we==null)
+			return false;
+		else
+			return true;
+	}
+
+	public WebElement waitForPageLoad_referenceElement(String elementXPATH) throws Exception
+	{
+		WebElement we = null;
+		we = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementXPATH)));
+		return we;
+	}
+}
+

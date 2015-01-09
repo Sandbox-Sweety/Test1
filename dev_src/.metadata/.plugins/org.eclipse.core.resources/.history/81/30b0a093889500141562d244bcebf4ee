@@ -1,0 +1,6 @@
+package htmlDOM;
+
+public class PocUIMap {
+
+	public static final String SignIn_Title = "//a[contains text()='Click here']";
+}

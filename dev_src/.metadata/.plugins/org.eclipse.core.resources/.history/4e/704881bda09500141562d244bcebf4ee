@@ -1,0 +1,19 @@
+package com.cirrosecure.POC;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.*;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+import junit.framework.Assert;
+
+public class ActionKeywords extends CoreFunctions{
+
+//	public boolean VerifyPageTitle(String Page_Title)
+//	{
+//		Assert()
+//	}
+}

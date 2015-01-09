@@ -1,0 +1,5 @@
+browser = IE
+cs_url = https://cloudshield.cirrosecure.com
+webdriver.chrome.driver = D:\\dev_src\\CSAutomation\\binaries\\chromeDriver2.13\\chromedriver.exe
+webdriver.ie.driver = D:\\dev_src\\CSAutomation\\binaries\\ieDriver\\x64\\IEDriverServer.exe
+os = windows

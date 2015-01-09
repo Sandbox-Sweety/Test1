@@ -1,0 +1,39 @@
+package com.cirrosecure.poc;
+
+import htmldom.UIMap;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import com.cirrosecure.poc.FunctionLibrary;
+import static org.testng.Assert.*;
+
+@SuppressWarnings("unused")
+public class POCTest extends FunctionLibrary{
+
+	FunctionLibrary fl = new FunctionLibrary();
+
+	//Will run before every test
+	@BeforeMethod
+	public void setUp() {		
+		fl.open_Browser();
+	}
+
+	//Will run after every test
+	@AfterMethod
+	public void tearDown() {
+		fl.close_Browser();		
+		fl.quit_Driver();
+	}
+
+	//First test
+	@Test
+	public void LoginTestCase() {
+		fl.launch_URL();	
+		assertTrue(fl.verify_PageTitle("CirroSecure")); 
+		fl.enter_Text(UIMap.Email_TextBox, "harsh@gmail.com");
+		fl.enter_Text(UIMap.Password_TextBox, "Puma#123");	
+		fl.click_Button("commit");
+	}
+}

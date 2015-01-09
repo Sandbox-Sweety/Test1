@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="com.cirrosecure.poc.POCTest" duration-ms="11930" started-at="2015-01-07T12:39:56Z" finished-at="2015-01-07T12:40:08Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="11930" started-at="2015-01-07T12:39:56Z" finished-at="2015-01-07T12:40:08Z">
+      <class name="com.cirrosecure.poc.POCTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.cirrosecure.poc.POCTest@71201ad7]" name="setUp" is-config="true" duration-ms="3485" started-at="2015-01-07T18:09:56Z" finished-at="2015-01-07T18:09:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="LoginTestCase()[pri:0, instance:com.cirrosecure.poc.POCTest@71201ad7]" name="LoginTestCase" duration-ms="5924" started-at="2015-01-07T18:09:59Z" finished-at="2015-01-07T18:10:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTestCase -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cirrosecure.poc.POCTest@71201ad7]" name="tearDown" is-config="true" duration-ms="2510" started-at="2015-01-07T18:10:05Z" finished-at="2015-01-07T18:10:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.cirrosecure.poc.POCTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- com.cirrosecure.poc.POCTest -->
+</testng-results>

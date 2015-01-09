@@ -1,0 +1,9 @@
+package htmlDOM;
+
+public class PocUIMap {
+
+	public static final String SignIn_Title = "//*[contains(text(), 'Sign in')]";
+	public static final String Email_TextBox = "id='user_email2'";
+	public static final String Password_TextBox = "id='user_password'";
+	public static final String SignIn_Button = "value='Sign in'";
+}

@@ -1,0 +1,25 @@
+package com.cirrosecure.poc;
+
+import htmldom.UIMap;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import com.cirrosecure.poc.CoreFunctions;
+import static org.testng.Assert.*;
+
+@SuppressWarnings("unused") @Test
+public class POCTest {
+
+	CoreFunctions cf = new CoreFunctions();
+
+	//First test
+	
+	public void LoginTestCase() {
+		cf.openBrowser();
+		cf.LaunchURL();	
+		//assertTrue(cf.driver.getTitle().equals()); 
+
+	}
+}

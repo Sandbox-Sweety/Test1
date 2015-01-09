@@ -1,0 +1,9 @@
+package htmldom;
+
+public class UIMap {
+
+	public static final String SignInPage_Title = "//*[contains(text(), 'Sign in')]";
+	public static final String Email_TextBox = "id='user_email2'";
+	public static final String Password_TextBox = "id='user_password'";
+	public static final String SignIn_Button = "value='Sign in'";
+}
